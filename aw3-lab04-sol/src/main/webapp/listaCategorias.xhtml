@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta charset="UTF-8" />
+        <title>Lista de Categorias</title>
+    </h:head>
+    <h:body>
+        <h:dataTable border="1" value="#{categoriaMB.categorias}" var="categoria">
+            <h:column>
+                <f:facet name="header"><h:outputText value="ID"/></f:facet>
+                <h:outputText value="#{categoria.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Descrição"/></f:facet>
+                <h:outputText value="#{categoria.descricao}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Ativo"/></f:facet>
+                <h:outputText value="#{categoria.ativo}" />
+            </h:column>
+        </h:dataTable>
+        
+        <p />
+        <h:link value="HOME" outcome="cadastraProdutoMaterial" />
+        
+    </h:body>
+</html>
+

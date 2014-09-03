@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>AW3 - Laboratorio 01</title>
+        <meta charset="UTF-8" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome:" for="itNome" />
+                <h:inputText id="itNome" value="#{usuarioBean.usuario.nome}" />
+                <h:outputLabel value="Email:" for="itEmail" />
+                <h:inputText id="itEmail" value="#{usuarioBean.usuario.email}" />
+                <h:outputLabel value="Senha:" for="isSenha" />
+                <h:inputSecret id="isSenha" value="#{usuarioBean.usuario.senha}" />
+                <h:outputLabel value="Sexo:" for="smSexo" />
+                <h:selectOneMenu id="smSexo" value="#{usuarioBean.usuario.sexo}" >
+                    <f:selectItem itemValue="M" itemLabel="Masculino" />
+                    <f:selectItem itemValue="F" itemLabel="Feminino" />
+                </h:selectOneMenu>
+                <h:outputLabel value="Casado" for="cbCasado" />
+                <h:selectBooleanCheckbox id="cbCasado" value="#{usuarioBean.usuario.casado}" />
+            </h:panelGrid>
+            <h:commandButton value="Salvar" action="#{usuarioBean.salvar()}" /> 
+        </h:form>
+    </h:body>
+</html>
