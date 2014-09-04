@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta charset="UTF-8" />
+        <title>Lista de Categorias</title>
+        <h:outputStylesheet library="css" name="estilosAplicacao.css" />        
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:dataTable value="#{categoriaMB.categorias}" var="categoria"
+                         columnClasses="colunaLink, colunaString, colunaNumero"
+                         rowClasses="normal" headerClass="tituloFormulario"
+                         styleClass="tabelaGC">
+                <h:column>
+                    <f:facet name="header"><h:outputText value="ID"/></f:facet>
+                    <h:outputText value="#{categoria.id}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputText value="Descrição"/></f:facet>
+                    <h:commandLink action="#{categoriaMB.verDetalhe(categoria)}">
+                        <h:outputText value="#{categoria.descricao}" />
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputText value="Ativo"/></f:facet>
+                    <h:selectBooleanCheckbox disabled="true" value="#{categoria.ativo}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta charset="UTF-8" />
+        <title>Laboratório com Ajax</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid border="1" columns="2">
+                <h:outputLabel value="Número 1" for="num1" />
+                <h:outputLabel value="Número 2" for="num2" />
+                <h:inputText id="num1" value="#{calculadoraMB.numero1}"/>
+                <h:inputText id="num2" value="#{calculadoraMB.numero2}"/>
+                <h:panelGroup>
+                    <h:commandButton action="#{calculadoraMB.multiplica}" value="*">
+                        <f:ajax execute="@form" render="resultado" />
+                    </h:commandButton>
+                    <h:commandButton action="#{calculadoraMB.soma}" value="+">
+                        <f:ajax execute="@form" render="resultado" />
+                    </h:commandButton>
+                    <h:commandButton action="#{calculadoraMB.divisao}" value="/">
+                        <f:ajax execute="@form" render="resultado" />
+                    </h:commandButton>
+                </h:panelGroup>
+                <h:outputLabel id="resultado" value="#{calculadoraMB.resultado}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
