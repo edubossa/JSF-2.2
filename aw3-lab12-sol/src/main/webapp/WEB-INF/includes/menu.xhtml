@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<h:form xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <p>
+        <h:commandLink action="listaProdutos">
+            <h:outputText value="Listar Produtos"/>
+        </h:commandLink>
+    </p>
+    <p>
+        <h:commandLink action="#{ProdutoMB.criarNovo()}">
+            <h:outputText value="Cadastrar Produto"/>
+        </h:commandLink>
+    </p>
+    <p>
+        <h:commandLink action="listaCategorias">
+            <h:outputText value="Listar Categorias"/>
+        </h:commandLink>
+    </p>
+    <p>
+        <h:commandLink action="#{categoriaMB.criarNovo()}">
+            <h:outputText value="Cadastrar Categoria"/>
+        </h:commandLink>
+    </p>
+</h:form>

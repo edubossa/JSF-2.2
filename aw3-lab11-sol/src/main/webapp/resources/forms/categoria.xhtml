@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <!-- recebe o managed bean controller de categorias-->
+        <cc:attribute name="managedBean" required="true" />
+
+        <!-- recebe o método a ser invocado pelo submit do form -->
+        <cc:attribute name="action" required="true" targets="btSalvar" />
+        
+        <!-- facet com o cabeçalho a ser utilizado no panelGrid -->
+        <cc:facet name="header" />
+        
+        <!-- permite a configuração de validadores, conversores 
+        e ValueChangeListeners para o campo de descrição da categoria -->
+        <cc:editableValueHolder name="descricao" targets="cDescricao" />
+
+        <!-- permite a configuração de validadores, conversores 
+        e ValueChangeListeners para o campo de data da categoria -->
+        <cc:editableValueHolder name="data" targets="cData" />
+
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:panelGrid columns="2" columnClasses="colunaEsquerda, colunaDireita"
+                     rowClasses="normal" headerClass="tituloFormulario"
+                     styleClass="tabelaGC">
+            <cc:insertFacet name="header" />
+            <h:outputLabel for="cId" value="ID"/>
+            <h:panelGroup>
+                <h:inputText id="cId" value="#{cc.attrs.managedBean.categoria.id}"
+                             disabled="true" maxlength="5" size="5"/>
+                <h:outputLabel for="cAtivo" value="Ativo"/>
+                <h:selectBooleanCheckbox id="cAtivo"
+                                         value="#{cc.attrs.managedBean.categoria.ativo}"/>
+            </h:panelGroup>
+            <h:outputLabel for="cDescricao" value="Descricao"/>
+            <h:panelGroup>
+                <h:inputText id="cDescricao" value="#{cc.attrs.managedBean.categoria.descricao}"
+                             size="40" />
+                <h:message for="cDescricao" />
+            </h:panelGroup>
+            <h:outputLabel for="cData" value="Data (dd/mm/yyyy)"/>
+            <h:panelGroup>
+                <h:inputText id="cData" value="#{cc.attrs.managedBean.data}" required="true" />
+                <h:message for="cData" />
+            </h:panelGroup>
+            <h:outputText value=""/>
+            <h:commandButton id="btSalvar" value="Salvar" />
+        </h:panelGrid>
+    </cc:implementation>
+</html>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:form="http://java.sun.com/jsf/composite/forms">
+    <h:head>
+        <meta charset="UTF-8" />
+        <title>Cadastro de Categoria</title>
+        <h:outputStylesheet library="css" name="estilosAplicacao.css" />
+    </h:head>
+    <h:body>
+        <h:form prependId="false">
+            <!-- insira aqui o código pedido na apostila -->
+            <form:categoria managedBean="#{categoriaMB}" action="#{categoriaMB.salvar}">
+                <f:facet name="header">
+                    Cadastro de categoria
+                </f:facet>
+                <f:validateLength for="descricao" minimum="5" maximum="30" />
+                <f:validator for="data" validatorId="br.com.globalcode.jsf.ValidadorData" />
+                <f:convertDateTime for="data" pattern="dd/MM/yyyy" />
+            </form:categoria>
+        </h:form>
+    </h:body>
+</html>
