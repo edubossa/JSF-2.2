@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="titulo">Formulário de Produto</ui:define>
+        <ui:define name="corpo">
+            <h:form prependId="false">
+                <h:panelGrid columns="3" >
+                    <f:facet name="header">
+                        <h:outputText value="Cadastro de Produtos" />
+                    </f:facet>
+
+                    <p:outputLabel for="id" value="ID" />
+                    <p:inputText id="id" size="4" value="#{ProdutoMB.produto.id}" disabled="true"/>
+                    <p:message for="id"/>                
+
+                    <p:outputLabel for="nome" value="Nome" />
+                    <p:inputText id="nome" value="#{ProdutoMB.produto.nome}" size="40"
+                                 required="true">
+                        <f:validateLength maximum="40" minimum="5"/>
+                    </p:inputText>
+                    <p:message for="nome"/>
+
+                    <p:outputLabel value="Marca" for="marca"/>
+                    <p:inputText id="marca" value="#{ProdutoMB.produto.marca}"
+                                 required="true">
+                        <f:validateLength maximum="40" minimum="5"/>
+                    </p:inputText>
+                    <p:message for="marca"/>
+
+                    <p:outputLabel value="Preço" for="preco"/>
+                    <p:inputText id="preco" value="#{ProdutoMB.produto.preco}"
+                                 size="8"/>
+                    <p:message for="preco"/>
+
+                    <p:outputLabel for="ativo" value="Ativo" />
+                    <p:selectBooleanCheckbox id="ativo" value="#{ProdutoMB.produto.ativo}" />
+                    <p:message for="ativo"/>                
+
+                    <p:outputLabel for="categoria" value="Categoria" />
+                    <p:selectOneMenu id="categoria" value="#{ProdutoMB.produto.categoria}" >
+                        <f:selectItems value="#{ProdutoMB.categoriasDisponiveis}" var="categoria"
+                                       itemLabel="#{categoria.descricao}" itemValue="#{categoria}" />
+                    </p:selectOneMenu>
+                    <p:message for="categoria" />
+
+                    <p:outputLabel value="Tipo de Produto" for="tipo"/>
+                    <p:selectOneRadio id="tipo" value="#{ProdutoMB.tipo}" onchange="submit()" 
+                                      immediate="true" valueChangeListener="#{ProdutoMB.valorAlterado}">
+                        <f:selectItems value="#{ProdutoMB.tipos}"/>
+                    </p:selectOneRadio>
+                    <p:outputLabel value=""/>
+
+                    <p:outputLabel value="Taxa de Entrega" for="taxa"
+                                   rendered="#{ProdutoMB.produtoMaterial}"/>
+                    <p:inputText id="taxa"
+                                 value="#{ProdutoMB.produto.taxaEntrega}"
+                                 rendered="#{ProdutoMB.produtoMaterial}"/>
+                    <p:outputLabel value="" rendered="#{ProdutoMB.produtoMaterial}"/>
+
+                    <p:outputLabel value="Nome do Arquivo" for="nomeArquivo"
+                                   rendered="#{not ProdutoMB.produtoMaterial}"/>
+                    <p:inputText id="nomeArquivo"
+                                 value="#{ProdutoMB.produto.nomeArquivo}"
+                                 rendered="#{not ProdutoMB.produtoMaterial}"/>
+                    <p:outputLabel value="" rendered="#{not ProdutoMB.produtoMaterial}"/>
+
+                    <p:outputLabel value="Tamanho do Arquivo" for="tamanho"
+                                   rendered="#{not ProdutoMB.produtoMaterial}"/>
+                    <p:inputText id="tamanho" 
+                                 value="#{ProdutoMB.produto.tamanho}"
+                                 rendered="#{not ProdutoMB.produtoMaterial}"/>
+                    <p:outputLabel value="" rendered="#{not ProdutoMB.produtoMaterial}"/>
+
+                    <p:commandButton value="Salvar" action="#{ProdutoMB.salvar()}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

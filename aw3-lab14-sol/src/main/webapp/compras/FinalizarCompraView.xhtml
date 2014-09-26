@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Formulário pagamento</title>
+        <meta charset='UTF-8' />
+        <h:outputStylesheet library="css" name="aw.css" />    
+    </h:head>
+    <h:body>
+        <H3>Dados do Pedido</H3>
+        <h:form id='formularioPagamento'>
+
+            <h:outputLabel value="Dados pessoais" class="tituloform"/>
+            <h:panelGrid columns="2" class="gridTopico" width="60%">
+                <h:outputText value="Nome"/>
+                <h:inputText id="nome" size="80" value="#{comprasMB.cliente.nome}"/>
+                <h:outputText value="CPF" />
+                <h:inputText id="cpf" size="80" value="#{comprasMB.cliente.cpf}" />
+                <h:outputText value="Email" />
+                <h:inputText id="email" size="80" value="#{comprasMB.cliente.email}" />
+                <h:outputText value="Telefone"/>
+                <h:inputText id="telefone" value="#{comprasMB.cliente.telefone}" />
+            </h:panelGrid>
+            
+            <br />
+            
+            <h:outputLabel value="Endereço de entrega" class="tituloform"/>
+            <h:panelGrid columns="4" class="gridTopico" width="60%">
+                <h:outputText value="Rua/Av" />
+                <h:inputText id="rua" size="60" value="#{comprasMB.cliente.enderecoRua}"/>
+                <h:outputText value="Número" />
+                <h:inputText id="numero" size="5" value="#{comprasMB.cliente.enderecoNumero}"/>
+                <h:outputText value="Bairro" />
+                <h:inputText id="bairro" size="60" value="#{comprasMB.cliente.enderecoBairro}"/>
+                <h:outputText value="Cidade" />
+                <h:inputText id="cidade" value="#{comprasMB.cliente.enderecoCidade}"/>
+                <h:outputText value="Estado" />
+                <h:inputText id="estado" size="60" value="#{comprasMB.cliente.enderecoEstado}"/>
+                <h:outputText value="Cep" />
+                <h:inputText id="cep" value="#{comprasMB.cliente.enderecoCep}"/>
+            </h:panelGrid>
+            
+            <br />
+            
+            <h:outputLabel value='Dados para pagamento' class='tituloform'/>
+            <h:panelGrid columns="2" class="gridTopico" width="60%" columnClasses="esquerda, direita">
+                <h:outputText value="Cartão de crédito" />
+                <h:selectOneMenu id="bandeira" value="#{comprasMB.bandeiraCartao}">
+                    <f:selectItem itemValue="Visa" itemLabel="visa" />
+                    <f:selectItem itemValue="MasterCard" itemLabel="mastercard" />
+                    <f:selectItem itemValue="American Express" itemLabel="amex" />
+                </h:selectOneMenu>
+                <h:outputText value="Número do cartão" />
+                <h:inputText id="numeroCartao" size="30" value="#{comprasMB.numeroCartao}"/>
+                <h:outputText value="Data Validade" />
+                <h:inputText id="dataValidade" size="10" value="#{comprasMB.validadeCartao}"/>
+            </h:panelGrid>
+
+            <br />
+            <h:commandButton value="submit" action="PedidoView"/>
+        </h:form>
+    </h:body>
+</html>

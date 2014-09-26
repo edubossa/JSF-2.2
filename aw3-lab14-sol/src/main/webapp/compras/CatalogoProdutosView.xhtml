@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Catalogo Produtos</title>
+        <meta charset='UTF-8' />
+        <h:outputStylesheet library="css" name="aw.css" />    
+    </h:head>
+    <h:body>
+        <h:form>
+            <h3>Catalogo de produtos</h3>
+            <h:dataTable var="produto" value="#{comprasMB.catalogo}" 
+                         width="700">
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Nome" />
+                    </f:facet>
+                    <h:outputText value="#{produto.nome}" styleClass="gridCampo"/>
+                </h:column>
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Marca" />
+                    </f:facet>
+                    <h:outputText value="#{produto.marca}" styleClass="gridCampo"/>  
+                </h:column>
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Preço" />
+                    </f:facet>
+                    <h:outputText value="#{produto.preco}" styleClass="gridCampo">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </h:column>
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Comprar" />
+                    </f:facet>
+                    <h:commandLink action="#{comprasMB.adicionarItem(produto)}" >
+                        <h:graphicImage library="imagens" name="carrinho.gif" />
+                    </h:commandLink>        
+                </h:column>
+            </h:dataTable>
+        </h:form>    
+    </h:body>
+</html>
+

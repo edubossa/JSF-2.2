@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pedido de compra</title>
+        <meta charset='UTF-8' />
+        <h:outputStylesheet library="css" name="aw.css" />    
+    </h:head>
+    <h:body>
+        <H3>Dados do Pedido</H3>
+        <h:outputLabel value="Dados pessoais" class="tituloform"/>
+        <h:panelGrid columns="2" class="gridTopico" width="60%">
+            <h:outputLabel class="tituloform" value="Nome"/>
+            <h:outputText id="nome" value="#{comprasMB.cliente.nome}"/>
+            <h:outputLabel class="tituloform" value="CPF" />
+            <h:outputText id="cpf"  value="#{comprasMB.cliente.cpf}" />
+            <h:outputLabel class="tituloform" value="Email" />
+            <h:outputText id="email"  value="#{comprasMB.cliente.email}" />
+            <h:outputLabel class="tituloform" value="Telefone"/>
+            <h:outputText id="telefone" value="#{comprasMB.cliente.telefone}" />
+        </h:panelGrid>
+
+        <br />
+
+        <h:outputLabel value="Endereço de entrega" class="tituloform"/>
+        <h:panelGrid columns="4" class="gridTopico" width="60%">
+            <h:outputLabel class="tituloform" value="Rua/Av" />
+            <h:outputText id="rua"  value="#{comprasMB.cliente.enderecoRua}"/>
+            <h:outputLabel class="tituloform" value="Número" />
+            <h:outputText id="numero"  value="#{comprasMB.cliente.enderecoNumero}"/>
+            <h:outputLabel class="tituloform" value="Bairro" />
+            <h:outputText id="bairro"  value="#{comprasMB.cliente.enderecoBairro}"/>
+            <h:outputLabel class="tituloform" value="Cidade" />
+            <h:outputText id="cidade" value="#{comprasMB.cliente.enderecoCidade}"/>
+            <h:outputLabel class="tituloform" value="Estado" />
+            <h:outputText id="estado"  value="#{comprasMB.cliente.enderecoEstado}"/>
+            <h:outputLabel class="tituloform" value="Cep" />
+            <h:outputText id="cep" value="#{comprasMB.cliente.enderecoCep}"/>
+        </h:panelGrid>
+
+        <br />
+
+        <h:outputLabel value='Dados para pagamento' class='tituloform'/>
+        <h:panelGrid columns="2" class="gridTopico" width="60%" columnClasses="esquerda, direita">
+            <h:outputLabel class="tituloform" value="Cartão de crédito" />
+            <h:outputText id="bandeira" value="#{comprasMB.bandeiraCartao}" />
+            <h:outputLabel class="tituloform" value="Número do cartão" />
+            <h:outputText id="numeroCartao"  value="#{comprasMB.numeroCartao}"/>
+            <h:outputLabel class="tituloform" value="Data Validade" />
+            <h:outputText id="dataValidade"  value="#{comprasMB.validadeCartao}"/>
+        </h:panelGrid>
+
+
+        <H3>Items do Pedido</H3>
+        <h:dataTable var="item"  value="#{comprasMB.carrinhoCompras.items}">
+            <h:column headerClass="tituloCampo">
+                <f:facet name="header">
+                    <h:outputText value="Nome" />
+                </f:facet>
+                <h:outputText value="#{item.produto.nome}" styleClass="gridCampo"/>
+            </h:column>
+
+            <h:column headerClass="tituloCampo">
+                <f:facet name="header">
+                    <h:outputText value="Marca" />
+                </f:facet>
+                <h:outputText value="#{item.produto.marca}" styleClass="gridCampo"/>
+            </h:column>
+
+            <h:column headerClass="tituloCampo">
+                <f:facet name="header">
+                    <h:outputText value="Quantidade" />
+                </f:facet>
+                <h:outputText value="#{item.quantidade}" styleClass="gridCampo"/>
+            </h:column>
+
+            <h:column headerClass="tituloCampo">
+                <f:facet name="header">
+                    <h:outputText value="Preço" />
+                </f:facet>
+                <h:outputText value="#{item.produto.preco}" styleClass="gridCampo">
+                    <f:convertNumber type="currency" />
+                </h:outputText>
+            </h:column>
+
+        </h:dataTable>
+        <div class="tituloform">
+            Total: <h:outputText value="#{comprasMB.carrinhoCompras.valorTotal}">
+                <f:convertNumber type="currency" />
+            </h:outputText>
+        </div>
+
+        <div>
+            <h:link value="Voltar para página principal" outcome="finalizar" /> 
+        </div>
+    </h:body>
+</html>

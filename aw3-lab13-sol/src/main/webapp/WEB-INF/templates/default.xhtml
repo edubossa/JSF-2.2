@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+   
+    <h:head>
+        <meta charset="UTF-8" />
+        <title><ui:insert name="titulo">Titulo</ui:insert></title>
+    </h:head>
+    
+    <h:body>
+        
+        <div id="top">
+            <ui:insert name="cabecalho"></ui:insert>
+        </div>
+        
+        <div id="menu">
+            <ui:insert name="menu">
+                <ui:include src="/WEB-INF/includes/menu.xhtml" />
+            </ui:insert>
+        </div>
+        
+        <div id="content">
+            <ui:insert name="corpo">Corpo</ui:insert>
+        </div>
+        
+    </h:body>
+    
+</html>

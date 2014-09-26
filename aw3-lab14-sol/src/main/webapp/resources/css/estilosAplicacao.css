@@ -1,0 +1,53 @@
+.normal{
+    font-family: verdana;
+    font-size: 10pt;
+    color:Navy;
+    font-weight: bold;
+}
+.tabelaGC{
+    background-color: rgb(198,214,255);
+}
+.estiloLinhaImpar {
+    font-family: verdana;
+    font-size: 10pt;
+    color:Navy;
+    font-weight: bold;
+    background-color: InactiveCaptiontext;
+}
+
+.estiloLinhaPar {
+    font-family: verdana;
+    font-size: 10pt;
+    color:Navy;
+    font-weight: bold;
+}
+
+.colunaDireita{
+    text-align: left;
+}
+.colunaEsquerda{
+    text-align: right;
+}
+
+.tituloFormulario{
+    font-family: verdana;
+    font-size: 12pt;
+    color:Navy;
+    font-weight: bold;
+}
+
+.colunaLink{
+    text-align: left;
+}
+.colunaNumero{
+    font-weight: normal;
+    text-align: center;
+}
+.colunaString{
+    font-weight: normal;
+    text-align: left;
+}
+.colunaValor{
+    font-weight: normal;
+    text-align: right;
+}

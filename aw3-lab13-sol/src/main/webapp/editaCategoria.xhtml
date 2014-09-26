@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:form="http://java.sun.com/jsf/composite/forms"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="titulo">Cadastro de Categoria</ui:define>
+        <ui:define name="corpo">
+            <h:form prependId="false">
+                <form:categoria managedBean="#{categoriaMB}" action="#{categoriaMB.salvar}">
+                    <f:facet name="header">
+                        Cadastro de categoria
+                    </f:facet>
+                    <f:validateLength for="descricao" minimum="5" maximum="30" />
+                    <f:validator for="data" validatorId="br.com.globalcode.jsf.ValidadorData" />
+                    <f:convertDateTime for="data" pattern="dd/MM/yyyy" />
+                </form:categoria>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

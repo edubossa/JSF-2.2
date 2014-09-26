@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <!-- recebe o managed bean controller de categorias-->
+        <cc:attribute name="managedBean" required="true" />
+
+        <!-- recebe o método a ser invocado pelo submit do form -->
+        <cc:attribute name="action" required="true" targets="btSalvar" />
+        
+        <!-- facet com o cabeçalho a ser utilizado no panelGrid -->
+        <cc:facet name="header" />
+        
+        <!-- permite a configuração de validadores, conversores 
+        e ValueChangeListeners para o campo de descrição da categoria -->
+        <cc:editableValueHolder name="descricao" targets="cDescricao" />
+
+        <!-- permite a configuração de validadores, conversores 
+        e ValueChangeListeners para o campo de data da categoria -->
+        <cc:editableValueHolder name="data" targets="cData" />
+
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:panelGrid columns="2" >
+            <cc:insertFacet name="header" />
+            <p:outputLabel for="cId" value="ID"/>
+            <h:panelGroup>
+                <p:inputText id="cId" value="#{cc.attrs.managedBean.categoria.id}"
+                             disabled="true" maxlength="5" size="5"/>
+                <p:outputLabel for="cAtivo" value="Ativo"/>
+                <p:selectBooleanCheckbox id="cAtivo"
+                                         value="#{cc.attrs.managedBean.categoria.ativo}"/>
+            </h:panelGroup>
+            <p:outputLabel for="cDescricao" value="Descricao"/>
+            <h:panelGroup>
+                <p:inputText id="cDescricao" value="#{cc.attrs.managedBean.categoria.descricao}"
+                             size="40" />
+                <p:message for="cDescricao" />
+            </h:panelGroup>
+            <p:outputLabel for="cData" value="Data (dd/mm/yyyy)"/>
+            <h:panelGroup>
+                <p:calendar id="cData" value="#{cc.attrs.managedBean.data}" required="true" 
+                            pattern="dd/MM/yyyy"/>
+                <p:message for="cData" />
+            </h:panelGroup>
+            <h:outputText value=""/>
+            <!-- o componente p:commandButton faz uma requisição ajax por padrão. Porém, neste caso,
+            quando ocorrem erros de conversão e/ou validação no servidor as mensagens não são atualizadas
+            na página. Para manter o mesmo comportamento de um h:commandButton é necessário desabilitar
+            as requisições ajax através do atributo ajax="false" -->
+            <p:commandButton id="btSalvar" value="Salvar" ajax="false"/>
+            
+        </h:panelGrid>
+    </cc:implementation>
+</html>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Carrinho de Compras</title>
+        <meta charset='UTF-8' />
+        <h:outputStylesheet library="css" name="aw.css" />    
+    </h:head>
+    <h:body>
+        <H3>Suas compras</H3>
+        <h:form>
+            <h:panelGrid columns="1" class="tituloform" width="700">
+                <h:panelGroup>
+                    <h:commandLink action="CatalogoProdutosView">
+                        <h:graphicImage library="imagens" name="carrinho.gif" />
+                    </h:commandLink>   
+                    <h:commandLink action="CatalogoProdutosView" value=" Continuar compras" />                    
+                </h:panelGroup>
+            </h:panelGrid>
+            <h:dataTable var="item" width="700"
+                         value="${comprasMB.carrinhoCompras.items}" >
+
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Nome" />
+                    </f:facet>
+                    <h:outputText value="#{item.produto.nome}" styleClass="gridCampo"/>
+                </h:column>
+
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Marca" />
+                    </f:facet>
+                    <h:outputText value="#{item.produto.marca}" styleClass="gridCampo"/>  
+                </h:column>
+
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Quantidade" />
+                    </f:facet>
+                    <h:outputText value="#{item.quantidade}" styleClass="gridCampo"/>  
+                </h:column>
+
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Preço unid." />
+                    </f:facet>
+                    <h:outputText value="#{item.produto.preco}" styleClass="gridCampo">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </h:column>
+
+                <h:column headerClass="tituloCampo">
+                    <f:facet name="header">
+                        <h:outputText value="Total" />
+                    </f:facet>
+                    <h:outputText value="#{item.produto.preco * item.quantidade}" styleClass="gridCampo">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </h:column>
+            </h:dataTable>
+            <div class="tituloform">
+                Total: <h:outputText value="#{comprasMB.carrinhoCompras.valorTotal}">
+                    <f:convertNumber type="currency" />
+                </h:outputText>
+            </div>
+            <div class="tituloform">
+                <h:commandLink action="FinalizarCompraView"
+                               value="Finalizar Compra" />                    
+            </div>
+        </h:form>
+    </h:body>
+</html>
